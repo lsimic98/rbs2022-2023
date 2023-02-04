@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7426b0dd-4e66-4785-9e7e-e97d54a4a898" name="Changes" comment="Attack!">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/izvestaji/izvestaj-sl223306m.xlsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -53,16 +53,52 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Kalu/IdeaProjects/rbs2022-2023",
+    "last_opened_file_path": "C:/Users/Kalu/IdeaProjects/rbs2022-2023/izvestaji",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.Console Font",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.keymap",
     "spring.configuration.checksum": "334a9f90e952fb1dfd46c8b25662898f",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Kalu\IdeaProjects\rbs2022-2023\izvestaji" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.SecureSoftwareDevelopmentApplication">
+    <configuration name="SonarQubeAnalysis" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="sonar:sonar" />
+                <option value="-Dsonar.projectKey=rbs-projekat" />
+                <option value="-Dsonar.host.url=http://localhost:9000" />
+                <option value="-Dsonar.login=3fae64035d634279914f4b31cbbd9092bb30283b" />
+              </list>
+            </option>
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
     <configuration name="SecureSoftwareDevelopmentApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="RBS2022-2023" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.zuehlke.securesoftwaredevelopment.SecureSoftwareDevelopmentApplication" />
@@ -70,6 +106,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Maven.SonarQubeAnalysis" />
+      <item itemvalue="Spring Boot.SecureSoftwareDevelopmentApplication" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -87,6 +127,7 @@
       <workItem from="1671539537289" duration="687000" />
       <workItem from="1671639498870" duration="38000" />
       <workItem from="1675464803622" duration="271000" />
+      <workItem from="1675519725087" duration="7496000" />
     </task>
     <task id="LOCAL-00001" summary="Init commit">
       <created>1670698325007</created>
