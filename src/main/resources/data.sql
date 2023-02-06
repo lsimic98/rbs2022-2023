@@ -51,3 +51,13 @@ values (1, 3),
        (3, 1),
        (4, 2);
 
+insert into permissions(id, name)
+values (1, 'ADD_COMMENT'),
+       (2, 'VIEW_MOVIES_LIST'),
+       (3, 'CREATE_MOVIE'),
+       (4, 'VIEW_PERSONS_LIST'),
+       (5, 'VIEW_PERSON'),
+       (6, 'UPDATE_PERSON'),
+       (7, 'VIEW_MY_PROFILE'),
+       (8, 'RATE_MOVIE');
+
