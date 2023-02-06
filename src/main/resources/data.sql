@@ -61,3 +61,27 @@ values (1, 'ADD_COMMENT'),
        (7, 'VIEW_MY_PROFILE'),
        (8, 'RATE_MOVIE');
 
+insert into role_to_permissions(roleId, permissionId)
+values
+--  ADMIN Role - roleId = 1
+    (1, 1),
+    (1, 2),
+    (1, 3),
+    (1, 4),
+    (1, 5),
+    (1, 6),
+    (1, 7),
+    (1, 8),
+-- MANAGER Role - roleId = 2
+    (2, 1),
+    (2, 2),
+    (2, 3),
+    (2, 4),
+    (2, 6),
+    (2, 7),
+-- REVIEWER Role - roleId = 3
+    (3, 1),
+    (3, 2),
+    (3, 6),
+    (3, 7),
+    (3, 8);
