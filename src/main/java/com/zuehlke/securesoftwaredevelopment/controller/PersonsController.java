@@ -64,7 +64,17 @@ public class PersonsController {
     }
 
     @DeleteMapping("/persons/{id}")
-    public ResponseEntity<Void> person(@PathVariable int id) {
+    public ResponseEntity<Void> person(@PathVariable int id) throws AccessDeniedException {
+
+        if(!SecurityUtil.hasPermission("UPDATE_PERSON"))
+        {
+            int currentUserId = SecurityUtil.getCurrentUser().getId();
+            if(currentUserId != id)
+            {
+                throw new AccessDeniedException("Forbidden!");
+            }
+        }
+
         personRepository.delete(id);
         userRepository.delete(id);
 
@@ -72,10 +82,21 @@ public class PersonsController {
     }
 
     @PostMapping("/update-person")
-    public String updatePerson(Person person, HttpSession httpSession, @RequestParam("csrfToken") String csrfToken) {
+    public String updatePerson(Person person, HttpSession httpSession, @RequestParam("csrfToken") String csrfToken) throws AccessDeniedException {
         String myCsrfToken = httpSession.getAttribute("CSRF_TOKEN").toString();
         if(!myCsrfToken.equals(csrfToken))
-            throw new AccessControlException("Forbidden!");
+            throw new AccessDeniedException("Forbidden!");
+
+        if(!SecurityUtil.hasPermission("UPDATE_PERSON"))
+        {
+            int currentUserId = SecurityUtil.getCurrentUser().getId();
+            int personId = Integer.parseInt(person.getId());
+            if(currentUserId != personId)
+            {
+                throw new AccessDeniedException("Forbidden!");
+            }
+        }
+
         personRepository.update(person);
         return "redirect:/persons/" + person.getId();
     }
