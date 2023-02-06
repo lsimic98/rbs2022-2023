@@ -95,6 +95,7 @@ public class MoviesController {
     }
 
     @PostMapping("/movies")
+    @PreAuthorize("hasAuthority('CREATE_MOVIE')")
     public String createMovie(NewMovie newMovie) throws SQLException {
         List<Genre> genreList = this.genreRepository.getAll();
         List<Genre> genresToInsert = newMovie.getGenres().stream().map(genreId -> genreList.stream().filter(genre -> genre.getId() == genreId).findFirst().get()).collect(Collectors.toList());
