@@ -4,6 +4,8 @@ import com.zuehlke.securesoftwaredevelopment.domain.Permission;
 import com.zuehlke.securesoftwaredevelopment.domain.User;
 import com.zuehlke.securesoftwaredevelopment.repository.UserRepository;
 import com.zuehlke.securesoftwaredevelopment.service.PermissionService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -20,6 +22,8 @@ import java.util.List;
 @Component
 public class DatabaseAuthenticationProvider implements AuthenticationProvider {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(DatabaseAuthenticationProvider.class);
+    private static final AuditLogger AUDIT_LOGGER = AuditLogger.getAuditLogger(DatabaseAuthenticationProvider.class);
     private final UserRepository userRepository;
     private final PermissionService permissionService;
 
@@ -39,10 +43,18 @@ public class DatabaseAuthenticationProvider implements AuthenticationProvider {
         Integer totp = StringUtils.isEmpty(details) ? null : Integer.valueOf(details.toString());
 
         boolean success = validCredentials(username, password);
-        if (success) {
+        if (success)
+        {
             User user = userRepository.findUser(username);
             List<GrantedAuthority> grantedAuthorities = getGrantedAuthorities(user);
+
+            AUDIT_LOGGER.audit("User with username: " + username + " successfully logged in.");
+
             return new UsernamePasswordAuthenticationToken(user, password, grantedAuthorities);
+        }
+        else
+        {
+            AUDIT_LOGGER.audit("Login failed for user with username: " + username);
         }
 
         throw new BadCredentialsException(String.format(PASSWORD_WRONG_MESSAGE, username, password));
