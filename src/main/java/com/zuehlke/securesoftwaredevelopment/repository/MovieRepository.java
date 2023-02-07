@@ -37,7 +37,7 @@ public class MovieRepository {
                 movieList.add(movie);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.warn("Failed to get all movies", e);
         }
         return movieList;
     }
@@ -55,6 +55,10 @@ public class MovieRepository {
             while (rs.next()) {
                 movieList.add(createMovieFromResultSet(rs));
             }
+        }
+        catch (SQLException e)
+        {
+            LOG.warn("Failed to search movies for search term {}", searchTerm, e);
         }
         return movieList;
     }
@@ -83,7 +87,7 @@ public class MovieRepository {
                 return movie;
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.warn("Failed to get movie {}", movieId, e);
         }
 
         return null;
@@ -110,12 +114,12 @@ public class MovieRepository {
                         statement2.setInt(2, genre.getId());
                         statement2.executeUpdate();
                     } catch (SQLException e) {
-                        e.printStackTrace();
+                        LOG.warn("Failed to insert new movies in movies-genres relation", e);
                     }
                 });
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.warn("Failed to create a new movie with title {}", movie.getTitle(), e);
         }
         return id;
     }
@@ -133,7 +137,7 @@ public class MovieRepository {
             statement.executeUpdate(query3);
             statement.executeUpdate(query4);
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.warn("Failed to delete a movie {}", movieId, e);
         }
     }
 
