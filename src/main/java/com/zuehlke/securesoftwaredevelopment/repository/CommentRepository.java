@@ -37,7 +37,7 @@ public class CommentRepository {
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.warn("User {} failed to create comment for movie {} ",comment.getUserId(), comment.getMovieId(), e);
         }
     }
 
@@ -51,7 +51,8 @@ public class CommentRepository {
                 commentList.add(new Comment(rs.getInt(1), rs.getInt(2), rs.getString(3)));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.warn("Failed to get all comments for movie {}", movieId, e);
+
         }
         return commentList;
     }
