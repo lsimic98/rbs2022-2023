@@ -1,5 +1,6 @@
 package com.zuehlke.securesoftwaredevelopment.repository;
 
+import com.sun.tools.sjavac.Log;
 import com.zuehlke.securesoftwaredevelopment.config.AuditLogger;
 import com.zuehlke.securesoftwaredevelopment.config.Entity;
 import com.zuehlke.securesoftwaredevelopment.domain.Person;
@@ -34,7 +35,7 @@ public class PersonRepository {
                 personList.add(createPersonFromResultSet(rs));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.warn("Failed to get all persons", e);
         }
         return personList;
     }
@@ -50,6 +51,10 @@ public class PersonRepository {
                 personList.add(createPersonFromResultSet(rs));
             }
         }
+        catch (SQLException e)
+        {
+            LOG.warn("Failed to search persons with search term {}", searchTerm, e);
+        }
         return personList;
     }
 
@@ -62,7 +67,7 @@ public class PersonRepository {
                 return createPersonFromResultSet(rs);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.warn("Failed to get person {}", personId, e);
         }
 
         return null;
@@ -75,7 +80,7 @@ public class PersonRepository {
         ) {
             statement.executeUpdate(query);
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.warn("Failed to delete a person {}", personId, e);
         }
     }
 
@@ -100,7 +105,7 @@ public class PersonRepository {
             statement.setString(2, email);
             statement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.warn("Failed to update a person {}", personUpdate.getId(), e);
         }
     }
 }
